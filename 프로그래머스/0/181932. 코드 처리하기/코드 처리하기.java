@@ -17,10 +17,6 @@ class Solution {
             }
         }
         
-        if(ret.isEmpty()){
-            return "EMPTY";
-        } else {
-            return ret;
-        }
+        return ret.isEmpty() ? "EMPTY" : ret;
     }
 }
