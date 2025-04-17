@@ -16,15 +16,15 @@ class Solution {
     
     public int solution(int[] arr) {
         int[] a = arr.clone();
+        int[] b = new int[arr.length];
         
         int i=0;
-        int[] temp = new int[arr.length];
         while(true){
-            temp = fun(a);
-            if(Arrays.equals(a, temp)){
+            b = fun(a);
+            if(Arrays.equals(a, b)){
                 break;
             }
-            a = temp;
+            a = b;
             i++;
         }
         
