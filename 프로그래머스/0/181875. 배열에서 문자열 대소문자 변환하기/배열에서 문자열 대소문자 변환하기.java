@@ -1,11 +1,9 @@
-import java.util.*;
-import java.util.concurrent.atomic.AtomicInteger;
+import java.util.stream.IntStream;
 
 class Solution {
     public String[] solution(String[] strArr) {
-        AtomicInteger index = new AtomicInteger(0);
-        return Arrays.stream(strArr)
-            .map(s -> {int i=index.getAndIncrement(); return i%2==1 ? s.toUpperCase() : s.toLowerCase();})
+        return IntStream.range(0, strArr.length)
+            .mapToObj(i -> (i % 2 == 0) ? strArr[i].toLowerCase() : strArr[i].toUpperCase())
             .toArray(String[]::new);
     }
 }
