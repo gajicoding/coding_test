@@ -1,20 +1,13 @@
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 class Solution {
     public int solution(String[] strArr) {
-        Map<Integer, Integer> hm = new HashMap<>();
+        int[] count = new int[31];
 
         for (String str : strArr) {
-            int length = str.length();
-            hm.put(length, hm.getOrDefault(length, 0) + 1);
+            count[str.length()]++;
         }
 
-        int max = 0;
-        for (int count : hm.values()) {
-            max = Math.max(max, count);
-        }
-
-        return max;
+        return Arrays.stream(count).max().getAsInt();
     }
 }
