@@ -6,7 +6,7 @@ class Solution {
         int b = Integer.parseInt(arr[2]);
         char op = arr[1].charAt(0);
         
-        int answer = switch(arr[1].charAt(0)){
+        int answer = switch(op){
             case '+' -> a + b;
             case '-' -> a - b;
             case '*' -> a * b;
