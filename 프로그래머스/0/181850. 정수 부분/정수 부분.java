@@ -1,5 +1,5 @@
 class Solution {
     public int solution(double flo) {
-        return (int)flo / 1;
+        return (int)flo;
     }
 }
