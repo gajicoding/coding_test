@@ -2,10 +2,9 @@ import java.util.*;
 
 class Solution {
     public int[] solution(int[] arr) {
-        int length = arr.length;
         int size = 1;
 
-        while (size < length) {
+        while (size < arr.length) {
             size *= 2;
         }
 
