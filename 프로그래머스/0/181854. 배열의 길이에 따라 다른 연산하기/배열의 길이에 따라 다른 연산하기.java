@@ -1,9 +1,8 @@
 class Solution {
     public int[] solution(int[] arr, int n) {
-        for (int i = 0; i < arr.length; i++) {
-            if ((arr.length % 2 == 1 && i % 2 == 0) || (arr.length % 2 == 0 && i % 2 == 1)) {
-                arr[i] += n;
-            }
+        boolean b = arr.length % 2 == 1;
+        for (int i = b ? 0 : 1; i < arr.length; i+=2) {
+            arr[i] += n;
         }
 
         return arr;
