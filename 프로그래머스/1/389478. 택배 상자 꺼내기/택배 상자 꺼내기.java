@@ -13,9 +13,9 @@ class Solution {
         
         int count = (totalF - numF);
         if (totalF % 2 == 0) {
-            count += (topMaxIndex >= numIndex) ? 1 : 0;
+            count += (numIndex <= topMaxIndex) ? 1 : 0;
         } else {
-            count += (topMaxIndex <= numIndex) ? 1 : 0;
+            count += (numIndex >= topMaxIndex) ? 1 : 0;
         }
         
         return count;
