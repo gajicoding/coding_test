@@ -3,7 +3,7 @@ class Solution {
         int total = 0;
         
         for (String o : order) {
-            total += (o.contains("americano") || o.equals("anything")) ? 4500 : 5000;
+            total += (o.contains("cafelatte")) ? 5000 : 4500;
         }
         
         return total;
