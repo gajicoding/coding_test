@@ -1,11 +1,9 @@
+import java.util.*;
+
 class Solution {
     public int solution(String[] order) {
-        int total = 0;
-        
-        for (String o : order) {
-            total += (o.contains("cafelatte")) ? 5000 : 4500;
-        }
-        
-        return total;
+        return Arrays.stream(order)
+                .mapToInt(o -> o.contains("cafelatte") ? 5000 : 4500)
+                .sum();
     }
 }
