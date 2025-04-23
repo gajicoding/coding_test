@@ -1,13 +1,19 @@
 import java.util.*;
-import java.util.stream.*;
 
 class Solution {
     public String[] solution(String[] picture, int k) {
-        return Arrays.stream(picture)
-            .flatMap(row -> IntStream.range(0, k)
-                .mapToObj(i -> row.chars()
-                    .mapToObj(c -> String.valueOf((char) c).repeat(k))
-                    .collect(Collectors.joining())))
-            .toArray(String[]::new);
+        List<String> result = new ArrayList<>();
+
+        for (String row : picture) {
+            String rowk = row.chars()
+                .mapToObj(c -> String.valueOf((char) c).repeat(k))
+                .reduce("", String::concat);
+
+            for (int i = 0; i < k; i++) {
+                result.add(rowk);
+            }
+        }
+
+        return result.toArray(new String[0]);
     }
 }
