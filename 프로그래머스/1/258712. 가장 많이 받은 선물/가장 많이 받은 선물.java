@@ -3,42 +3,45 @@ import java.util.*;
 class Solution {
     public int solution(String[] friends, String[] gifts) {
         int n = friends.length;
-        int[][] arr = new int[n][n];
-        HashMap<String, Integer> giftCount = new HashMap<>();
-        HashMap<String, Integer> nameMap = new HashMap<>();
+        int[][] srTable = new int[n][n];    // 준 사람/받은 사람 표
+        HashMap<String, Integer> giftCount = new HashMap<>();   // 이름: 선물 지수
+        HashMap<String, Integer> nameIndex = new HashMap<>();     // 이름: index
         
-        int[] re = new int[n];
+        int[] nextCount = new int[n];  // 받을 선물 개수
         
         for(int i=0; i<n; i++){
             giftCount.put(friends[i], 0);
-            nameMap.put(friends[i], i);
+            nameIndex.put(friends[i], i);
         }
         
         String[] gArr;
+        String s, r;
         for(String g: gifts){
             gArr = g.split(" ");
-            giftCount.put(gArr[0], giftCount.get(gArr[0]) + 1);
-            giftCount.put(gArr[1], giftCount.get(gArr[1]) - 1);
+            s = gArr[0];    // 준 사람
+            r = gArr[1];    // 받은 사람
+            giftCount.put(s, giftCount.get(s) + 1);
+            giftCount.put(r, giftCount.get(r) - 1);
             
-            arr[nameMap.get(gArr[0])][nameMap.get(gArr[1])]++;
+            srTable[nameIndex.get(s)][nameIndex.get(r)]++;
         }
         
         for(int i=0; i<n; i++){
             for(int j=i+1; j<n; j++){
-                if(arr[i][j] > arr[j][i]){
-                    re[i]++;
-                } else if(arr[i][j] < arr[j][i]){
-                    re[j]++;
+                if(srTable[i][j] > srTable[j][i]){
+                    nextCount[i]++;
+                } else if(srTable[i][j] < srTable[j][i]){
+                    nextCount[j]++;
                 } else {
                     if(giftCount.get(friends[i]) > giftCount.get(friends[j])){
-                        re[i]++;
+                        nextCount[i]++;
                     } else if(giftCount.get(friends[i]) < giftCount.get(friends[j])){
-                        re[j]++;
+                        nextCount[j]++;
                     }
                 }
             }
         }
         
-        return Arrays.stream(re).max().orElse(0);
+        return Arrays.stream(nextCount).max().orElse(0);
     }
 }
