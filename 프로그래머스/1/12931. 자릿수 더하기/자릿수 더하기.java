@@ -2,11 +2,8 @@ import java.util.*;
 
 public class Solution {
     public int solution(int n) {
-        int sum = 0;
-        while (n > 0) {
-            sum += n % 10;
-            n /= 10;
-        }
-        return sum;
+        return Arrays.stream((n+"").split(""))                  // int->String 변환 후 한 글자씩 자르기
+                        .mapToInt(s -> Integer.parseInt(s))     // int로 변환
+                        .sum();                                 // 합
     }
 }
