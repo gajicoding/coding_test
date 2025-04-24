@@ -2,11 +2,13 @@ import java.util.*;
 
 class Solution {
     public int[] solution(long n) {
-        int[] answer = {};
-        return new StringBuilder(n+"")
-                .reverse()
-                .chars()
-                .map(c -> c - '0')
-                .toArray();
+        int[] answer = new int[(n+"").length()];
+        
+        for(int i = 0; i < answer.length; i++){
+            answer[i] = (int)(n % 10);
+            n /= 10;;
+        }
+        
+        return answer;
     }
 }
