@@ -1,8 +1,8 @@
 class Solution {
     public int solution(int n, int w, int num) {
         // 총 몇층 몇번째
-        int totalF = getF(w, n-1);  // 1을 뺀다. 계산이 훨씬 편리해짐
-        int topMaxIndex = getIndex(w, totalF, n-1);
+        int nF = getF(w, n-1);  // 1을 뺀다.
+        int nIndex = getIndex(w, nF, n-1);
         
         // 선택한 상자
         int numF = getF(w, num-1);
@@ -11,11 +11,11 @@ class Solution {
         // 짝수층 ->
         // 홀수층 <-
         
-        int count = (totalF - numF);
-        if (totalF % 2 == 0) {
-            count += (numIndex <= topMaxIndex) ? 1 : 0;
+        int count = (nF - numF);
+        if (nF % 2 == 0) {
+            count += (numIndex <= nIndex) ? 1 : 0;
         } else {
-            count += (numIndex >= topMaxIndex) ? 1 : 0;
+            count += (numIndex >= nIndex) ? 1 : 0;
         }
         
         return count;
