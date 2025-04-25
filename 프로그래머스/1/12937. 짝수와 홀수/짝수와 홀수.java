@@ -1,5 +1,5 @@
 class Solution {
     public String solution(int num) {
-        return Math.abs(num%2) == 1 ? "Odd" : "Even";
+        return num%2 == 0 ? "Even" : "Odd";
     }
 }
