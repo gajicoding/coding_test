@@ -10,17 +10,18 @@ class Solution {
         if(now >= opStart && now < opEnd) now = opEnd;
         
         for(String c: commands){
-            now += c.equals("next") ? 10 : -10;
+            if(c.equals("next")){
+                now += 10;
+                if(now > videoLen) now = videoLen;
+            } else {
+                now -= 10;
+                if(now < 0) now = 0;
+            }
             
-            if(now < 0) now = 0;
             if(now >= opStart && now < opEnd) now = opEnd;
-            if(now > videoLen) now = videoLen;
-            
-            System.out.println(now);
         }
         
-        return String.format("%02d:%02d", now/60, now%60);
-        
+        return String.format("%02d:%02d", now/60, now%60);  
     }
     
     private int convert(String s){
