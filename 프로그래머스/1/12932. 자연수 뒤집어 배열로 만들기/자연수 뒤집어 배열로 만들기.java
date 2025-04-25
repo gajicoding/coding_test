@@ -2,7 +2,7 @@ import java.util.*;
 
 class Solution {
     public int[] solution(long n) {
-        int[] answer = new int[(n+"").length()];
+        int[] answer = new int[Long.toString(n).length()];
         
         for(int i = 0; i < answer.length; i++){
             answer[i] = (int)(n % 10);
