@@ -5,17 +5,21 @@ public class Main {
         Scanner sc = new Scanner(System.in);
 
         int target = sc.nextInt();
-        int start = 1, end = 1, sum = 0;
-        int count = 0;
+        int start = 1, end = 1, sum = 1;
+        int count = 1;
 
-        while(end <= target){
-           sum += end++;
-
-           while(sum > target){
-               sum -= start++;
-           }
-
-           if(sum == target) count++;
+        while(end < target){
+            if(sum == target) {
+                count++;
+                end++;
+                sum += end;
+            } else if(sum > target) {
+                sum -= start;
+                start++;
+            } else {
+                end++;
+                sum += end;
+            }
         }
 
         System.out.println(count);
