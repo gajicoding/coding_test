@@ -4,7 +4,7 @@ class Solution {
         String answer = s;
         
         for(int i=0; i<word.length; i++){
-            answer = answer.replaceAll(word[i], i+"");
+            answer = answer.replace(word[i], i+"");
         }
         
         return Integer.parseInt(answer);
