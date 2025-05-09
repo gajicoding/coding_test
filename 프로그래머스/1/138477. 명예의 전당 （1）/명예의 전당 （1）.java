@@ -9,7 +9,7 @@ class Solution {
             maxHeap.offer(score[i]);
             
             if (maxHeap.size() > k) {
-                maxHeap.poll();
+                maxHeap.remove();
             }
             
             answer[i] = maxHeap.peek();
