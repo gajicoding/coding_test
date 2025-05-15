@@ -8,7 +8,7 @@ class Solution {
         
         int min = Arrays.stream(arr).min().getAsInt();
         return Arrays.stream(arr)
-                     .filter(num -> num != min)
+                     .filter(a -> a != min)
                      .toArray();
     }
 }
